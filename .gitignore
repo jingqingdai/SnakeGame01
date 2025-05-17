@@ -1,0 +1,22 @@
+   # Python环境相关
+   __pycache__/
+   *.py[cod]
+   *$py.class
+   *.so
+   .Python
+   
+   # 虚拟环境文件夹
+   /env/
+   /venv/
+   ENV/
+   
+   # IDE相关文件夹和文件
+   /.idea/
+   .vscode/
+   *.swp
+   *.swo
+   
+   # 其他不需要的文件
+   prompts.md
+   .DS_Store
+   Thumbs.db
