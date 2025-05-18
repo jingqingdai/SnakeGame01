@@ -20,3 +20,5 @@
    prompts.md
    .DS_Store
    Thumbs.db
+/env
+/.idea
