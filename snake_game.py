@@ -326,9 +326,31 @@ while running:
         clock.tick(10)
         continue
     elif game_state == STATE_OVER:
-        show_message('游戏结束，按回车重新开始', RED)
-        show_score()
+        # 游戏标题使用大字体
+        title_font = pygame.font.SysFont('SimHei', 36)
+        title_surface = title_font.render('游戏结束', True, RED)
+        title_rect = title_surface.get_rect(center=(WIDTH // 2, HEIGHT // 3 - 50))  # 向上移动
+        
+        # 创建一个比文本略大的半透明背景
+        title_width, title_height = title_surface.get_size()
+        title_padding = 25
+        title_bg = pygame.Surface((title_width + title_padding*2, title_height + title_padding), pygame.SRCALPHA)
+        title_bg.fill((255, 255, 255, 180))
+        title_bg_rect = title_bg.get_rect(center=(WIDTH // 2, HEIGHT // 3 - 50))  # 向上移动
+        
+        win.blit(title_bg, title_bg_rect)
+        win.blit(title_surface, title_rect)
+        
+        # 显示分数
+        score_font = pygame.font.SysFont('SimHei', 30)
+        score_surface = score_font.render(f'分数: {score}', True, BLACK)
+        score_rect = score_surface.get_rect(center=(WIDTH // 2, HEIGHT // 3))  # 在游戏结束下方显示分数
+        win.blit(score_surface, score_rect)
+        
+        # 显示难度
         show_difficulty()
+        
+        # 显示按钮
         start_button.draw(win)
         
         # 检测开始按钮点击（在游戏结束界面也可以点击开始）
